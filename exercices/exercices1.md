@@ -32,7 +32,6 @@ ansible 2.10.8
   ansible python module location = /usr/lib/python3/dist-packages/ansible
   executable location = /usr/bin/ansible
   python version = 3.10.12 (main, Mar 22 2024, 16:50:05) [GCC 11.4.0]
-
 ```
 8. Déconnectez-vous et supprimez la VM.
 vagrant destroy ubuntu
