@@ -224,6 +224,9 @@ rocky | SUCCESS => {
 ```
 5. Afficher l'espace disque disponible.
 ```
+ansible all -m command -a "df -h /"
+```
+```
 debian | CHANGED | rc=0 >>
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/sda3       124G  2.3G  115G   2% /
