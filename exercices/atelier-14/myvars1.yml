@@ -1,0 +1,17 @@
+---  # vars1.yml
+
+- hosts: localhost
+  gather_facts: false
+
+  vars:
+    voiture: "SKODA Fabia"
+    moto: "TRIUMPH Street triple 765rs"
+
+  tasks:
+    - name: Voiture
+      debug:
+        msg: "Voiture: {{voiture}}"
+    - name: Moto
+      debug:
+        msg: "Moto: {{moto}}"
+...

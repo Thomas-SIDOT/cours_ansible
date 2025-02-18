@@ -1,0 +1,20 @@
+---  # myvars2.yml
+
+- hosts: localhost
+  gather_facts: false
+
+  tasks:
+
+    - name: Define variables
+      set_fact:
+        voiture: "SKODA Fabia"
+        moto: "TRIUMPH Street triple 765rs"
+
+    - name: Voiture
+      debug:
+        msg: "Voiture: {{voiture}}"
+
+    - name: Moto
+      debug:
+        msg: "Moto: {{moto}}"
+...
