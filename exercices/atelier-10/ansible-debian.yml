@@ -1,0 +1,30 @@
+---  # apache-debian.yml
+
+- hosts: debian
+
+  tasks:
+
+    - name: Mise à jour des paquets
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+
+    - name: Installation d'apache
+      apt:
+        name: apache2
+
+    - name: Création d'une page personalisée
+      copy:
+        dest: /var/www/html/index.html
+        mode: 0644
+        content: |
+          <!doctype html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Serveur Apache Debian</title>
+            </head>
+            <body>
+              <h1>Apache web server running on Debian Linux</h1>
+            </body>
+          </html>

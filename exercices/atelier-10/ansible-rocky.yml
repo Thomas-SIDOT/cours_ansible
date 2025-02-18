@@ -1,0 +1,31 @@
+---  # apache-rocky.yml
+
+- hosts: rocky
+
+  tasks:
+
+    - name: Installation d'Apache
+      dnf:
+        name: httpd
+
+    - name: Démarrage d'Apache
+      service:
+        name: httpd
+        state: started
+        enabled: true
+
+    - name: Personnalisation de la page
+      copy:
+        dest: /var/www/html/index.html
+        mode: 0644
+        content: |
+          <!doctype html>
+          <html>
+            <head>
+              <meta charset="utf-8">
+              <title>Serveur Apache Rocky</title>
+            </head>
+            <body>
+              <h1>Apache web server running on Rocky Linux.</h1>
+            </body>
+          </html>
