@@ -1,0 +1,41 @@
+---  # chrony.yml
+- name: Installer et configurer Chrony sur les cibles
+  
+  hosts: all
+
+  tasks:
+
+    - name: Charger les vars des machines
+      include_vars: >
+        chrony_{{ ansible_distribution | lower | replace(" ", "-") }}.yml
+
+    - name: Mettre à jour les informations des paquets sur Debian/Ubuntu
+      apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+
+    - name: Installer Chrony
+      package:
+        name: "{{ chrony_package_name }}"
+
+    - name: Démarrer et activer Chrony au démarrage
+      service:
+        name: "{{ chrony_service_name }}"
+        state: started
+        enabled: true
+
+    - name: Copier le fichier de configuration Chrony
+      template:
+        src: chrony.conf.j2
+        dest: "{{ chrony_config_path }}"
+        mode: '0644'
+      notify: Redémarrer Chrony
+
+  handlers:
+
+    - name: Redémarrer Chrony
+      service:
+        name: "{{ chrony_service_name }}"
+        state: restarted
+...
