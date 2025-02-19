@@ -1,0 +1,12 @@
+---  # python-info.yml
+
+- hosts: all
+
+  tasks:
+
+    - name: Python version
+      debug:
+        msg: >-
+          Python version = {{ansible_python_version}}
+
+...

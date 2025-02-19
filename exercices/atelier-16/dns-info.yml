@@ -1,0 +1,12 @@
+---  # dns-info.yml
+
+- hosts: all
+
+  tasks:
+
+    - name: DNS
+      debug:
+        msg: >-
+          DNS appelés = {{ansible_dns}}
+
+...

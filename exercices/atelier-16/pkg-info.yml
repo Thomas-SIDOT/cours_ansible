@@ -1,0 +1,12 @@
+---  # pkg-info.yml
+
+- hosts: all
+
+  tasks:
+
+    - name: Gestionnaire
+      debug:
+        msg: >-
+          Gestionnaire = {{ansible_pkg_mgr}}
+
+...
